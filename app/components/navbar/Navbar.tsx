@@ -1,16 +1,20 @@
+import Kategori from "../home/Kategori"
 import Cart from "./Cart"
-import Category from "./Category"
 import HamburgerMenu from "./HamburgerMenu"
 import Logo from "./Logo"
 
 const Navbar = () => {
   return (
-    <div className="flex  items-center justify-between gap-3 md:gap-10 md:px-10 h-16 bg-pink-500 text-slate-100">
-      <Logo/>
-      <Category/>
-      <Cart/>
-      <HamburgerMenu/>
+    <div className="flex flex-col bg-pink-500 text-slate-100">
+    <div className="flex items-center justify-between gap-3 md:gap-10 md:px-10 h-16">
+      <Logo />
+      <Cart />
+      <HamburgerMenu />
     </div>
+    <div className="w-full md:px-10 pb-1">
+      <Kategori />
+    </div>
+  </div>
   )
 }
 
