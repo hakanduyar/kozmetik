@@ -1,4 +1,6 @@
 import Banner from "./components/home/Banner";
+import Promotions from "./components/home/Promotions";
+import NewProducts from "./components/home/NewProducts";
 import Products from "./components/home/Products";
 
 export default function Home() {
@@ -6,6 +8,8 @@ export default function Home() {
     <div>
       <Banner/>
       <Products/>
+      <NewProducts/>
+      <Promotions/>
     </div>
   );
 }

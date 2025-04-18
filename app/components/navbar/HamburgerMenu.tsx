@@ -1,10 +1,15 @@
 import { RxHamburgerMenu } from "react-icons/rx";
-const HamburgerMenu = () => {
-  return (
-    <div className="relative flex md:hidden">
-        <RxHamburgerMenu size="25"/>
-    </div>
-  )
+
+interface HamburgerMenuProps {
+  onClick?: () => void;
 }
 
-export default HamburgerMenu
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ onClick }) => {
+  return (
+    <div className="relative flex md:hidden mr-2 p-1" onClick={onClick}>
+      <RxHamburgerMenu size={25} className="text-gray-700 hover:text-pink-500" />
+    </div>
+  );
+};
+
+export default HamburgerMenu;

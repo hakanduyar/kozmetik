@@ -1,8 +1,15 @@
 "use client"
-const Logo = () => {
-    return (
-        <div className="bg-pink-700 px-2 py-1 rounded-md text-lg md:text-2xl cursor-pointer">Kozmetik<span className="text-sm ">.com</span></div>
-  )
-}
+import Link from "next/link";
 
-export default Logo
+const Logo: React.FC = () => {
+  return (
+    <Link href="/">
+      <div className="px-1 md:px-2 py-1 cursor-pointer">
+        <span className="font-bold text-lg md:text-2xl text-pink-500">Kozmetik</span>
+        <span className="text-xs md:text-sm text-black">.com</span>
+      </div>
+    </Link>
+  );
+};
+
+export default Logo;

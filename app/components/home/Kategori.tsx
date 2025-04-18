@@ -1,34 +1,78 @@
 "use client"
-const Kategori = () => {
-    const kategoriList = [
-        {
-        name: "Kategori"
+import Link from "next/link";
+
+export const kategoriList = [
+    {
+      name: "Yeni Gelenler",
+      path: "/category/yeni",
+      highlight: true
     },
-        {
-        name: "Kategori"
+    {
+      name: "Makyaj",
+      path: "/category/makyaj"
     },
-        {
-        name: "Kategori"
+    {
+      name: "Cilt Bakımı",
+      path: "/category/cilt-bakimi"
     },
-        {
-        name: "Kategori"
+    {
+      name: "Parfüm",
+      path: "/category/parfum"
     },
-        {
-        name: "Kategori"
+    {
+      name: "Saç Bakımı",
+      path: "/category/sac-bakimi"
     },
-        {
-        name: "Kategori"
+    {
+      name: "İndirim",
+      path: "/indirim",
+      highlight: true
+    },
+    {
+      name: "Vücut Bakımı",
+      path: "/category/vucut-bakimi"
+    },
+    {
+      name: "Erkek Bakımı",
+      path: "/category/erkek-bakimi"
+    },
+    {
+      name: "Organik Ürünler",
+      path: "/category/organik"
+    },
+    {
+      name: "Manikür & Pedikür",
+      path: "/category/manikur-pedikur"
+    },
+    {
+      name: "Markalar",
+      path: "/markalar"
     }
-    ]
-  return (
-    <div className="flex items-center justify-center px:3 md:px-10 gap-3 md:gap-10 mb-1 overflow-x-auto">
-        {
-            kategoriList.map((kategori, index) =>(
-                <div className="min-w-[120px] flex items-center justify-center cursor-pointer" key={index}>{kategori.name}</div>
-            ))
-        }
-    </div>
-  )
+  ];
+
+export interface KategoriType {
+  name: string;
+  path: string;
+  highlight?: boolean;
 }
 
-export default Kategori
+const Kategori = () => {
+  return (
+    <div className="flex items-center space-x-1 md:space-x-6 py-2 text-xs md:text-sm overflow-x-auto whitespace-nowrap px-2 md:px-0">
+      {kategoriList.map((kategori: KategoriType, index) => (
+        <Link 
+          href={kategori.path} 
+          key={index} 
+          className={`px-2 py-1 hover:text-orange-500 relative group ${
+            kategori.highlight ? "font-semibold text-orange-500" : "text-gray-800"
+          }`}
+        >
+          {kategori.name}
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-200"></span>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default Kategori;
