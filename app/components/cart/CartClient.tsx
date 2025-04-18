@@ -27,7 +27,7 @@ const CartClient = () => {
     );
   }
 
-  let cartPrdctsTotal = cartPrdcts.reduce(
+  const cartPrdctsTotal = cartPrdcts.reduce(
     (acc: number, item: CardProductProps) => acc + item.quantity * item.price,
     0
   );

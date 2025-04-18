@@ -42,11 +42,6 @@ const Banner: React.FC = () => {
     }
   ];
 
-  useEffect(() => {
-    startAutoPlay();
-    return () => stopAutoPlay();
-  }, [currentSlide]);
-
   const startAutoPlay = () => {
     stopAutoPlay();
     autoPlayRef.current = setInterval(() => {
@@ -60,6 +55,11 @@ const Banner: React.FC = () => {
       autoPlayRef.current = null;
     }
   };
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, [currentSlide]); // startAutoPlay eklenmiş hali
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? banners.length - 1 : prev - 1));

@@ -1,8 +1,6 @@
 "use client"
 import { useState } from "react";
 import Logo from "./Logo";
-import Cart from "./Cart";
-import Category from "./Category";
 import HamburgerMenu from "./HamburgerMenu";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdSearch } from "react-icons/io";

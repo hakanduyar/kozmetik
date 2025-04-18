@@ -9,7 +9,7 @@ import Button from "../general/Button";
 import Heading from "../general/Heading";
 import Comment from "./Comment";
 import useCart from "@/hooks/useCart";
-
+ 
 export type CardProductProps = {
   id: string;
   name: string;
@@ -20,8 +20,30 @@ export type CardProductProps = {
   inStock: boolean;
 };
 
-const DetailClient = ({ product }: { product: any }) => {
-  const { productCartQty, addToBasket } = useCart();
+type ProductReview = {
+  id: string;
+  rating: number;
+  comment: string;
+  user: {
+    name: string;
+    rating: number;
+  };
+};
+
+type ProductType = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  inStock: boolean;
+  brand?: string;
+  reviews?: ProductReview[];
+};
+
+const DetailClient = ({ product }: { product: ProductType }) => {
+  const { addToBasket } = useCart();
   const [cardProduct, setCardProduct] = useState<CardProductProps>({
     id: product.id,
     name: product.name,
@@ -47,9 +69,9 @@ const DetailClient = ({ product }: { product: any }) => {
     addToBasket(cardProduct);
   };
 
-  let productRating =
-    product?.reviews?.reduce((acc: number, item: any) => acc + item.rating, 0) /
-    product?.reviews?.length;
+  const productRating =
+    product?.reviews?.reduce((acc: number, item: ProductReview) => acc + item.rating, 0) /
+    (product?.reviews?.length || 1);
 
   const isOnSale = product.originalPrice && product.originalPrice > product.price;
   const discountPercentage = isOnSale
@@ -215,7 +237,7 @@ const DetailClient = ({ product }: { product: any }) => {
           
           <div className="space-y-6">
             {product?.reviews?.length > 0 ? (
-              product.reviews.map((prd: any) => (
+              product.reviews.map((prd: ProductReview) => (
                 <Comment key={prd.id} prd={prd} />
               ))
             ) : (
